@@ -1,6 +1,6 @@
 NAME := libftprintf.a
 
-LIBFT_DIR := ./42-libft
+LIBFT_DIR := libft
 
 LIBFT := $(LIBFT_DIR)/libft.a
 
@@ -8,24 +8,24 @@ CC := clang
 
 CFLAGS := -Wall -Werror -Wextra
 
-SRC := ft_printf.c
+SRC := ft_printf.c ft_count_format.c
 
 OBJ := $(SRC:%.c=%.o)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	make -C $(LIBFT_DIR) all
+	$(MAKE) -C $(LIBFT_DIR)
 	rm -f $@$
 	ar -rcs $@ $(OBJ) $(LIBFT)
 
 clean:	clean
-	make -C $(LIBFT_DIR) clean
-	rm -rf ./a.out
-	rm -rf *.o
+	$(MAKE) -C $(LIBFT_DIR) $@$
+	rm -f ./a.out
+	rm -f *.o
 
 fclean:	clean
-	make -C $(LIBFT_DIR) fclean
-	rm -rf $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) $@$
+	rm -f $(NAME)
 
 re:	fclean all
