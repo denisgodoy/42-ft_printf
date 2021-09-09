@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 00:23:43 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/06 18:15:21 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/08 23:37:51 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-size_t	ft_count_format(const char *format);
+int	ft_printf(const char *format, ...);
 
 #endif
