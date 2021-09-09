@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 00:23:43 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 18:20:21 by degabrie         ###   ########.fr       */
+/*   Created: 2021/09/09 18:18:41 by degabrie          #+#    #+#             */
+/*   Updated: 2021/09/09 18:26:58 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+#include	"ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-char	*ft_strrev(char *str);
-int		ft_count_decimal_u(unsigned int n);
-char	*ft_utoa_hex(int n);
-char	*ft_utoa(int n);
+char	*ft_strrev(char *str)
+{
+	int		len;
+	int		j;
+	char	*ptr;
 
-#endif
+	j = 0;
+	len = ft_strlen(str);
+	ptr = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!ptr)
+		return (0);
+	while (len)
+		ptr[j++] = str[--len];
+	return (ptr);
+}

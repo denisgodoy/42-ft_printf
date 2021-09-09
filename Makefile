@@ -8,7 +8,7 @@ CC := clang
 
 CFLAGS := -Wall -Werror -Wextra
 
-SRC := ft_printf.c
+SRC := ft_printf.c ft_strrev.c ft_count_decimal_u.c ft_utoa.c ft_utoa_hex.c
 
 OBJ := $(SRC:%.c=%.o)
 

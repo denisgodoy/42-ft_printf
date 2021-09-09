@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/08 23:47:22 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/09 18:24:44 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_printf(const char *format, ...)
 	char	*temp;
 	char	temp_c;
 	size_t	i;
+	size_t	j;
 	size_t	size;
 
 	size = 0;
@@ -27,6 +28,7 @@ int	ft_printf(const char *format, ...)
 		return (-1);
 	va_start(args, format);
 	i = 0;
+	j = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
@@ -34,6 +36,13 @@ int	ft_printf(const char *format, ...)
 			if (ft_strchr("di", format[i + 1]))
 			{
 				temp = ft_itoa(va_arg(args, int));
+				ft_putstr_fd(temp, 1);
+				size += ft_strlen(temp);
+				free(temp);
+			}
+			else if (format[i + 1] == 'u')
+			{
+				temp = ft_utoa(va_arg(args, int));
 				ft_putstr_fd(temp, 1);
 				size += ft_strlen(temp);
 				free(temp);
@@ -63,6 +72,38 @@ int	ft_printf(const char *format, ...)
 				ft_putchar_fd(temp_c, 1);
 				size++;
 			}
+			else if (ft_strchr("xX", format[i + 1]))
+			{
+				temp = ft_utoa_hex(va_arg(args, int));
+				if (format[i + 1] == 'X')
+				{
+					while (temp[j])
+					{
+						temp[j] = ft_toupper(temp[j]);
+						j++;
+					}
+					j = 0;
+				}
+				ft_putstr_fd(temp, 1);
+				size += ft_strlen(temp);
+				free(temp);
+			}
+			else if (format[i + 1] == 'p')
+			{
+				temp = ft_utoa_hex(va_arg(args, int));
+				if (!temp)
+				{
+					ft_putstr_fd("0x0", 1);
+					size += 3;
+				}
+				else
+				{
+					ft_putstr_fd("0x", 1);
+					ft_putstr_fd(temp, 1);
+					size += (ft_strlen(temp) + 2);
+				}
+				free(temp);
+			}
 			i++;
 		}
 		else
@@ -78,9 +119,10 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int ret = ft_printf("%s %d %i %s %%", NULL, INT_MAX, INT_MIN, "hello world");
+	char *str = "42";
+	int ret = ft_printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %X %p", NULL, INT_MAX, INT_MIN, "world", -111, 1000, -1000, -99, (void *)str);
 	ft_printf("\n%d\n", ret);
-	int ret2 = printf("%s %d %i %s %%", NULL, INT_MAX, INT_MIN, "hello world");
+	int ret2 = printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %X %p", NULL, INT_MAX, INT_MIN, "world", -111, 1000, -1000, -99, (void *)str);
 	printf("\n%d\n", ret2);
 	return (0);
 }
