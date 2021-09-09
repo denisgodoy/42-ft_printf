@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/08 23:36:28 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/08 23:47:22 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int ret = ft_printf("%s %d %i %s", NULL, INT_MAX, INT_MIN, "hello world");
+	int ret = ft_printf("%s %d %i %s %%", NULL, INT_MAX, INT_MIN, "hello world");
 	ft_printf("\n%d\n", ret);
-	int ret2 = printf("%s %d %i %s", NULL, INT_MAX, INT_MIN, "hello world");
+	int ret2 = printf("%s %d %i %s %%", NULL, INT_MAX, INT_MIN, "hello world");
 	printf("\n%d\n", ret2);
 	return (0);
 }
