@@ -25,7 +25,7 @@ all:	$(NAME)
 $(NAME):	$(SRC_OBJ)
 	$(MAKE) -C $(LIBFT_DIR) all
 	rm -f $(NAME)
-	cp $(LIBFT) libftprintf.a
+	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(SRC_OBJ)
 
 clean:	clean
