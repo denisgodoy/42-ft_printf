@@ -6,13 +6,11 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 21:53:02 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/09 22:45:50 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
-#include	<limits.h>
-#include	<stdio.h>
+#include	"libftprintf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -118,13 +116,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return ((int)size);
 }
-
-// int	main(void)
-// {
-// 	char *str = "42";
-// 	int ret = ft_printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %x %p %p ", NULL, INT_MAX, INT_MIN, "world", -111, 0, -1000, -99, (void *)str, (void *)0);
-// 	ft_printf("\n%d\n", ret);
-// 	int ret2 = printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %x %p %p ", NULL, INT_MAX, INT_MIN, "world", -111, 0, -1000, -99, (void *)str, (void *)0);
-// 	printf("\n%d\n", ret2);
-// 	return (0);
-// }

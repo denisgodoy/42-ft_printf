@@ -6,11 +6,11 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:18:44 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 21:55:59 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/09 22:45:11 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../ft_printf.h"
+#include	"../libftprintf.h"
 
 static int	ft_count_decimal_u(unsigned int n);
 
