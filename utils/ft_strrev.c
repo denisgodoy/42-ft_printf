@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_decimal_u.c                               :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 18:18:46 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 18:18:47 by degabrie         ###   ########.fr       */
+/*   Created: 2021/09/09 18:18:41 by degabrie          #+#    #+#             */
+/*   Updated: 2021/09/09 21:07:46 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"../ft_printf.h"
 
-int	ft_count_decimal_u(unsigned int n)
+char	*ft_strrev(char *str)
 {
-	int	i;
+	int		len;
+	int		j;
+	char	*ptr;
 
-	i = 0;
-	while (n)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
+	j = 0;
+	len = ft_strlen(str);
+	ptr = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!ptr)
+		return (0);
+	while (len)
+		ptr[j++] = str[--len];
+	return (ptr);
 }

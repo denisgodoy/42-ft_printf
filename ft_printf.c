@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 18:24:44 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/09 21:53:02 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	char	*temp;
 	char	temp_c;
+	int		temp_i;
 	size_t	i;
 	size_t	j;
 	size_t	size;
@@ -90,19 +91,20 @@ int	ft_printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'p')
 			{
-				temp = ft_utoa_hex(va_arg(args, int));
-				if (!temp)
+				temp_i = va_arg(args, int);
+				if (!temp_i)
 				{
 					ft_putstr_fd("0x0", 1);
 					size += 3;
 				}
 				else
 				{
+					temp = ft_utoa_hex(temp_i);
 					ft_putstr_fd("0x", 1);
 					ft_putstr_fd(temp, 1);
 					size += (ft_strlen(temp) + 2);
+					free(temp);
 				}
-				free(temp);
 			}
 			i++;
 		}
@@ -117,12 +119,12 @@ int	ft_printf(const char *format, ...)
 	return ((int)size);
 }
 
-int	main(void)
-{
-	char *str = "42";
-	int ret = ft_printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %X %p", NULL, INT_MAX, INT_MIN, "world", -111, 1000, -1000, -99, (void *)str);
-	ft_printf("\n%d\n", ret);
-	int ret2 = printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %X %p", NULL, INT_MAX, INT_MIN, "world", -111, 1000, -1000, -99, (void *)str);
-	printf("\n%d\n", ret2);
-	return (0);
-}
+// int	main(void)
+// {
+// 	char *str = "42";
+// 	int ret = ft_printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %x %p %p ", NULL, INT_MAX, INT_MIN, "world", -111, 0, -1000, -99, (void *)str, (void *)0);
+// 	ft_printf("\n%d\n", ret);
+// 	int ret2 = printf("OLÁ %s %d %i HELLO %s %%%% %u %x %X %x %p %p ", NULL, INT_MAX, INT_MIN, "world", -111, 0, -1000, -99, (void *)str, (void *)0);
+// 	printf("\n%d\n", ret2);
+// 	return (0);
+// }

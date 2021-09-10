@@ -2,31 +2,36 @@ NAME := libftprintf.a
 
 LIBFT_DIR := libft
 
+UTILS_DIR := utils
+
 LIBFT := $(LIBFT_DIR)/libft.a
 
 CC := clang
 
 CFLAGS := -Wall -Werror -Wextra
 
-SRC := ft_printf.c ft_strrev.c ft_count_decimal_u.c ft_utoa.c ft_utoa_hex.c
+SRC := ft_printf.c
+
+UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_strrev.c ft_utoa.c ft_utoa_hex.c)
 
 OBJ := $(SRC:%.c=%.o)
 
-LIBFT_OBJ := $(LIBFT_DIR)/*.o
+UTILS_OBJ := $(UTILS_SRC:%.c=%.o)
 
-SRC_OBJ := $(OBJ) $(LIBFT) $(LIBFT_OBJ)
+SRC_OBJ := $(OBJ) $(UTILS_OBJ)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(SRC_OBJ)
 	$(MAKE) -C $(LIBFT_DIR) all
 	rm -f $(NAME)
+	cp $(LIBFT) libftprintf.a
 	ar -rcs $(NAME) $(SRC_OBJ)
 
 clean:	clean
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f ./a.out
-	rm -f *.o
+	rm -f $(SRC_OBJ)
 
 fclean:	clean
 	$(MAKE) -C $(LIBFT_DIR) fclean

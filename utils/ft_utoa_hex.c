@@ -6,11 +6,13 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:18:44 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 18:25:13 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/09 21:55:59 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"../ft_printf.h"
+
+static int	ft_count_decimal_u(unsigned int n);
 
 char	*ft_utoa_hex(int n)
 {
@@ -39,4 +41,17 @@ char	*ft_utoa_hex(int n)
 	str = ft_strrev(buffer);
 	free(buffer);
 	return (str);
+}
+
+static int	ft_count_decimal_u(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	while (n)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }
