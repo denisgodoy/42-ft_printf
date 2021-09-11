@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:18:44 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 22:45:11 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:47:27 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ char	*ft_utoa_hex(int n)
 	buffer = (char *)ft_calloc(ft_count_decimal_u(nbr) + 1, sizeof(char));
 	if (!buffer)
 		return (0);
-	if (n == 0)
-	{
-		buffer[0] = hex[0];
-		i = 1;
-	}
+	else if (n == 0)
+		buffer[0] = '0';
 	while (nbr)
 	{
 		buffer[i++] = hex[nbr % 16];

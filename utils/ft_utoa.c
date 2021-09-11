@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:18:55 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 22:45:14 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:47:32 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_utoa(int n)
 	ptr = (char *)ft_calloc(ft_count_decimal_u(nbr) + 1, sizeof(char));
 	if (!ptr)
 		return (0);
-	if (n == 0)
+	else if (n == 0)
 		ptr[0] = '0';
 	i = ft_count_decimal_u(nbr) - 1;
 	while (nbr)

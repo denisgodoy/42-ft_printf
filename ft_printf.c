@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/10 00:57:37 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:19:14 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ int	main(void)
 {
 	char *str = "42";
 	int ret = ft_printf("OLÁ %s %d %i HELLO-%c-%s %%%% %u %x %X %x %p %p %c %s%% %p",
-		NULL, INT_MAX, INT_MIN,  '\0', "world", -111, 0, -1000, -99, str, (void *)0, '\0', "\0", &str);
+		NULL, INT_MAX, INT_MIN,  '\0', "world", -111, 0, 1000, -99, (void *)&str, (void *)0, '\0', "\0", &str);
 	ft_printf("\n%d\n", ret);
 	int ret2 = printf("OLÁ %s %d %i HELLO-%c-%s %%%% %u %x %X %x %p %p %c %s%% %p",
-		NULL, INT_MAX, INT_MIN, '\0', "world", -111, 0, -1000, -99, str, (void *)0, '\0', "\0", &str);
+		NULL, INT_MAX, INT_MIN, '\0', "world", -111, 0, 1000, -99, (void *)&str, (void *)0, '\0', "\0", &str);
 	printf("\n%d\n", ret2);
 	return (0);
 }
