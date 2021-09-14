@@ -6,11 +6,11 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 18:18:41 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/09 22:45:09 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/14 17:59:58 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../libftprintf.h"
+#include	"../ft_printf.h"
 
 char	*ft_strrev(char *str)
 {

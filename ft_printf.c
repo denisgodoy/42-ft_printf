@@ -6,21 +6,21 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 17:02:22 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/14 19:50:57 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libftprintf.h"
+#include	"ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	char	*temp;
 	char	temp_c;
-	int		temp_i;
-	size_t	i;
-	size_t	j;
-	size_t	size;
+	size_t	temp_i;
+	int		size;
+	int		i;
+	int		j;
 
 	if (!format)
 		return (-1);
@@ -89,20 +89,12 @@ int	ft_printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'p')
 			{
-				temp_i = va_arg(args, int);
-				if (!temp_i)
-				{
-					ft_putstr_fd("0x0", 1);
-					size += 3;
-				}
-				else
-				{
-					temp = ft_utoa_hex(temp_i);
-					ft_putstr_fd("0x", 1);
-					ft_putstr_fd(temp, 1);
-					size += (ft_strlen(temp) + 2);
-					free(temp);
-				}
+				temp_i = va_arg(args, size_t);
+				temp = ft_stoa_hex(temp_i);
+				ft_putstr_fd("0x", 1);
+				ft_putstr_fd(temp, 1);
+				size += (ft_strlen(temp) + 2);
+				free(temp);
 			}
 			i++;
 		}
@@ -114,20 +106,5 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	return ((int)size);
-}
-
-#include <stdio.h>
-#include <limits.h>
-
-int	main(void)
-{
-	char *str = "42";
-	int ret = ft_printf("OLÁ %s %d %i HELLO-%c-%s %%%% %u %x %X %x %p %p %c %s%% %p",
-		NULL, INT_MAX, INT_MIN,  '\0', "world", -111, 0, 1000, -99, (void *)&str, (void *)0, '\0', "\0", &str);
-	ft_printf("\n%d\n", ret);
-	int ret2 = printf("OLÁ %s %d %i HELLO-%c-%s %%%% %u %x %X %x %p %p %c %s%% %p",
-		NULL, INT_MAX, INT_MIN, '\0', "world", -111, 0, 1000, -99, (void *)&str, (void *)0, '\0', "\0", &str);
-	printf("\n%d\n", ret2);
-	return (0);
+	return (size);
 }

@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   ft_stoa_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 18:18:55 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 19:25:24 by degabrie         ###   ########.fr       */
+/*   Created: 2021/09/09 18:18:44 by degabrie          #+#    #+#             */
+/*   Updated: 2021/09/14 19:26:00 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../ft_printf.h"
 
-static int	ft_count_decimal_u(unsigned int n);
+static int	ft_count_decimal_u(size_t n);
 
-char	*ft_utoa(int n)
+char	*ft_stoa_hex(size_t n)
 {
-	unsigned int	nbr;
-	int				i;
-	char			*ptr;
+	int		i;
+	char	*buffer;
+	char	*hex;
+	char	*str;
 
-	nbr = (unsigned int)n;
-	ptr = (char *)ft_calloc(ft_count_decimal_u(nbr) + 1, sizeof(char));
-	if (!ptr)
+	hex = "0123456789abcdef";
+	i = 0;
+	buffer = (char *)ft_calloc(ft_count_decimal_u(n) + 1, sizeof(char));
+	if (!buffer)
 		return (0);
 	else if (n == 0)
-		ptr[0] = '0';
-	i = ft_count_decimal_u(nbr) - 1;
-	while (nbr)
+		buffer[0] = '0';
+	while (n)
 	{
-		ptr[i] = nbr % 10 + '0';
-		nbr = nbr / 10;
-		i--;
+		buffer[i++] = hex[n % 16];
+		n = n / 16;
 	}
-	return (ptr);
+	str = ft_strrev(buffer);
+	free(buffer);
+	return (str);
 }
 
-static int	ft_count_decimal_u(unsigned int n)
+static int	ft_count_decimal_u(size_t n)
 {
 	int	i;
 
@@ -45,7 +47,7 @@ static int	ft_count_decimal_u(unsigned int n)
 		i = 1;
 	while (n)
 	{
-		n = n / 10;
+		n = n / 16;
 		i++;
 	}
 	return (i);

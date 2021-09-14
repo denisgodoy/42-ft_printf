@@ -12,7 +12,7 @@ CFLAGS := -Wall -Werror -Wextra
 
 SRC := ft_printf.c
 
-UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_strrev.c ft_utoa.c ft_utoa_hex.c)
+UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_strrev.c ft_utoa.c ft_utoa_hex.c ft_stoa_hex.c)
 
 OBJ := $(SRC:%.c=%.o)
 
