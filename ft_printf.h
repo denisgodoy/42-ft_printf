@@ -6,14 +6,14 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 00:23:43 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 23:04:28 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/14 23:51:50 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
 # include <stdarg.h>
+# include "libft/libft.h"
 
 int		ft_format_str(int c, va_list args);
 int		ft_printf(const char *format, ...);
