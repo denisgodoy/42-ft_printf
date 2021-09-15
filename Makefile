@@ -29,7 +29,7 @@ $(NAME):	$(SRC_OBJ)
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(SRC_OBJ)
 
-clean:	clean
+clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f ./a.out
 	rm -f $(SRC_OBJ)
