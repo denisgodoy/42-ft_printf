@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_format_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 23:04:09 by degabrie         ###   ########.fr       */
+/*   Created: 2021/09/14 21:39:06 by degabrie          #+#    #+#             */
+/*   Updated: 2021/09/14 23:04:49 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"../ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_format_str(int c, va_list args)
 {
-	va_list	args;
-	int		size;
-	int		i;
+	int	size;
 
-	if (!format)
-		return (-1);
 	size = 0;
-	i = 0;
-	va_start(args, format);
-	while (format[i])
+	if (ft_strchr("di", c))
+		size = ft_put_di(args);
+	else if (c == 'u')
+		size = ft_put_u(args);
+	else if (c == 's')
+		size = ft_put_cs(c, args);
+	else if (c == '%')
 	{
-		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
-		{
-			size += ft_format_str(format[i + 1], args);
-			i++;
-		}
-		else
-		{
-			ft_putchar_fd(format[i], 1);
-			size++;
-		}
-		i++;
+		ft_putchar_fd('%', 1);
+		size = 1;
 	}
-	va_end(args);
+	else if (c == 'c')
+		size = ft_put_cs(c, args);
+	else if (ft_strchr("xX", c))
+		size = ft_put_x(c, args);
+	else if (c == 'p')
+		size = ft_put_p(args);
 	return (size);
 }

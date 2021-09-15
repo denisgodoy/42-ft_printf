@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 00:23:43 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 19:48:08 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/14 23:04:28 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
+int		ft_format_str(int c, va_list args);
 int		ft_printf(const char *format, ...);
+int		ft_put_di(va_list args);
+int		ft_put_u(va_list args);
+int		ft_put_x(int c, va_list args);
+int		ft_put_cs(int c, va_list args);
+int		ft_put_p(va_list args);
+char	*ft_stoa_hex(size_t n);
 char	*ft_strrev(char *str);
 char	*ft_utoa_hex(int n);
-char	*ft_stoa_hex(size_t n);
 char	*ft_utoa(int n);
 
 #endif

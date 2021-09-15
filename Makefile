@@ -12,7 +12,8 @@ CFLAGS := -Wall -Werror -Wextra
 
 SRC := ft_printf.c
 
-UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_strrev.c ft_utoa.c ft_utoa_hex.c ft_stoa_hex.c)
+UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_format_str.c ft_format_utils.c ft_stoa_hex.c \
+ft_strrev.c ft_utoa_hex.c ft_utoa.c)
 
 OBJ := $(SRC:%.c=%.o)
 
@@ -38,7 +39,3 @@ fclean:	clean
 	rm -f $(NAME)
 
 re:	fclean all
-
-t:
-	$(CC) $(CFLAGS) ft_printf.c $(NAME)
-	./a.out
