@@ -6,18 +6,19 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/15 18:16:11 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/15 21:49:09 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf_bonus.h"
+
+static int	ft_convert(va_list args, const char **format, int i, int *size);
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		size;
 	int		i;
-	int		k;
 
 	if (!format)
 		return (-1);
@@ -27,18 +28,7 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%' && ft_strchr("# +cspdiuxX%", format[i + 1]))
-		{
-			k = i;
-			if (ft_strchr("# +", format[i + 1]))
-			{
-				while (!ft_strchr("csdixX", format[k++]))
-					size += ft_pre_format(format[i + 1], format[k], args);
-				i = k - 2;
-			}
-			else
-				size += ft_format_str(format[i + 1], args);
-			i++;
-		}
+			i = ft_convert(args, &format, i, &size);
 		else
 		{
 			ft_putchar_fd(format[i], 1);
@@ -48,4 +38,31 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (size);
+}
+
+static int	ft_convert(va_list args, const char **format, int i, int *size)
+{
+	int	j;
+
+	if ((*format)[i] == '%' && ft_strchr("# +cspdiuxX%", (*format)[i + 1]))
+	{
+		j = i;
+		if (ft_strchr("# +", (*format)[i + 1]))
+		{
+			while (!ft_strchr("csdixX", (*format)[j++]))
+			{
+				*size += ft_pre_format((*format)[i + 1], (*format)[j], args);
+				if (ft_isdigit((*format)[j]))
+				{
+					ft_putchar_fd(' ', 1);
+					*size += 1;
+				}
+			}
+			i = j - 2;
+		}
+		else
+			*size += ft_format_str((*format)[i + 1], args);
+		i++;
+	}
+	return (i);
 }

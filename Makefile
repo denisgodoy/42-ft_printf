@@ -36,6 +36,7 @@ all:	$(NAME)
 
 bonus:	$(BONUS_SRC_OBJ)
 	$(MAKE) -C $(LIBFT_DIR) all
+	rm -f $(NAME)
 	cp $(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(BONUS_SRC_OBJ)
 
