@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:39:06 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 23:04:49 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/15 23:58:19 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,13 @@ int	ft_format_str(int c, va_list args)
 		size = ft_put_di(args);
 	else if (c == 'u')
 		size = ft_put_u(args);
-	else if (c == 's')
+	else if (ft_strchr("cs", c))
 		size = ft_put_cs(c, args);
 	else if (c == '%')
 	{
 		ft_putchar_fd('%', 1);
 		size = 1;
 	}
-	else if (c == 'c')
-		size = ft_put_cs(c, args);
 	else if (ft_strchr("xX", c))
 		size = ft_put_x(c, args);
 	else if (c == 'p')
