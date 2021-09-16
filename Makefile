@@ -8,7 +8,7 @@ LIBFT := $(LIBFT_DIR)/libft.a
 
 CC := clang
 
-CFLAGS := -Wall -Wextra
+CFLAGS := -Wall -Werror -Wextra
 
 SRC := ft_printf.c
 
