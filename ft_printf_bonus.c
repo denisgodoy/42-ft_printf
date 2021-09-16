@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/15 21:49:09 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/16 00:04:00 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	ft_convert(va_list args, const char **format, int i, int *size)
 		j = i;
 		if (ft_strchr("# +", (*format)[i + 1]))
 		{
-			while (!ft_strchr("csdixX", (*format)[j++]))
+			while (!ft_strchr("sdixX", (*format)[j++]))
 			{
 				*size += ft_pre_format((*format)[i + 1], (*format)[j], args);
 				if (ft_isdigit((*format)[j]))
