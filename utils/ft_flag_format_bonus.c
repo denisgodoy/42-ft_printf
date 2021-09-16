@@ -6,21 +6,21 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:39:06 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/16 00:13:46 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/16 09:53:37 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../ft_printf_bonus.h"
 
-static void	ft_check_format(int p, int c, int *size, va_list args);
+static void	ft_check_flag(int p, int c, int *size, va_list args);
 static void	ft_put_flag(int **size, int p, int c);
 
-int	ft_pre_format(int p, int c, va_list args)
+int	ft_flag_format(int p, int c, va_list args)
 {
 	int	size;
 
 	size = 0;
-	ft_check_format(p, c, &size, args);
+	ft_check_flag(p, c, &size, args);
 	if (ft_strchr("di", c))
 		size += ft_put_di(args);
 	else if (c == 'u')
@@ -39,7 +39,7 @@ int	ft_pre_format(int p, int c, va_list args)
 	return (size);
 }
 
-static void	ft_check_format(int p, int c, int *size, va_list args)
+static void	ft_check_flag(int p, int c, int *size, va_list args)
 {
 	va_list	temp_args;
 

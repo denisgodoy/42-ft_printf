@@ -14,10 +14,10 @@ SRC := ft_printf.c
 
 BONUS_SRC := ft_printf_bonus.c
 
-UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_format_str.c ft_format_utils.c ft_stoa_hex.c \
+UTILS_SRC := $(addprefix $(UTILS_DIR)/, ft_format.c ft_format_utils.c ft_stoa_hex.c \
 ft_strrev.c ft_utoa_hex.c ft_utoa.c)
 
-UTILS_BONUS_SRC := $(addprefix $(UTILS_DIR)/, ft_format_str_bonus.c ft_pre_format_bonus.c \
+UTILS_BONUS_SRC := $(addprefix $(UTILS_DIR)/, ft_format_bonus.c ft_flag_format_bonus.c \
 ft_format_utils_bonus.c ft_stoa_hex_bonus.c ft_strrev_bonus.c ft_utoa_hex_bonus.c ft_utoa_bonus.c)
 
 OBJ := $(SRC:%.c=%.o)

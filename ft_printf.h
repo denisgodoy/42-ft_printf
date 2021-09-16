@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 00:23:43 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 23:51:50 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/16 10:07:01 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-int		ft_format_str(int c, va_list args);
+int		ft_format(int c, va_list args);
 int		ft_printf(const char *format, ...);
 int		ft_put_di(va_list args);
 int		ft_put_u(va_list args);

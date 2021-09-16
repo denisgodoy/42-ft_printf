@@ -6,7 +6,7 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:22:40 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/14 23:04:09 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/16 10:07:11 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
 		{
-			size += ft_format_str(format[i + 1], args);
+			size += ft_format(format[i + 1], args);
 			i++;
 		}
 		else

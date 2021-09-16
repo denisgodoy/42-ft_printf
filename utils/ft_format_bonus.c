@@ -6,13 +6,13 @@
 /*   By: degabrie <degabrie@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:39:06 by degabrie          #+#    #+#             */
-/*   Updated: 2021/09/15 15:11:15 by degabrie         ###   ########.fr       */
+/*   Updated: 2021/09/16 09:52:02 by degabrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../ft_printf_bonus.h"
 
-int	ft_format_str(int c, va_list args)
+int	ft_format(int c, va_list args)
 {
 	int	size;
 
