@@ -23,3 +23,12 @@ The format string is composed of zero or more directives: ordinary characters (n
 |  %x  	|Print a number in hexadecimal (base 16) - lowercase.|
 |  %X  	|Print a number in hexadecimal (base 16) - uppercase.|
 |  %%  	|Print a percent sign.|
+
+### Bonus part
+Managed the following flags:
+
+| Flag 	|  Description  |
+|:--------:	|:------------:	|
+|  #  	|For `x` conversions, a nonzero result has the string "0x" (or "0X" for `X` conversions) prepended to it.|
+|  `space` 	|A blank should be left before a positive number produced by a signed conversion (`d` or `i`).|
+|  +  	|A sign (+ or -) should always be placed before a number produced by a signed conversion.|
