@@ -1,6 +1,6 @@
 NAME := libftprintf.a
 
-LIBFT_DIR := libft
+LIBFT_DIR := 42-libft
 
 UTILS_DIR := utils
 
