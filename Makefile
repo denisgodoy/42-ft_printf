@@ -6,7 +6,7 @@ UTILS_DIR := utils
 
 LIBFT := $(LIBFT_DIR)/libft.a
 
-CC := clang
+CC := gcc
 
 CFLAGS := -Wall -Werror -Wextra
 
